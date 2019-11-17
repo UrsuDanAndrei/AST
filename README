@@ -1,0 +1,52 @@
+Ideea de baza:
+Se va utiliza o functie recursiva care primeste ca argument un pointer
+la adresa radacinii arborelui care trebuie calculat. Functia se
+apeleaza pentru subarborele stang si drept si se efectueaza operatia
+corespunzatoare pentru a uni aceste 2 rezultate in valoarea care
+trebuie returnata.
+
+======================================================================
+
+string2num_poz:
+Primeste un string care corespunde unui numar pozitiv si returneaza
+sub forma de intreg acel numar.
+
+-Aceasta functie este utilizata pentru a nu avea cod duplicat in
+functia string2num.
+
+======================================================================
+
+string2num:
+Primeste un string care corespunde unui numar (pozitiv sau negativ) si
+returneaza sub forma de intreg acel numar.
+
+-Initial se verifica existenta caracterului '-' pentru a determina
+semnul numarului reprezentat in string.
+-Daca numarul este pozitiv, se returneaza valoarea primita in urma
+apelului functiei string2num_poz.
+-Daca numarul este negativ, se trimite ca parametru string-ul fara
+caracterul '-' la apelul functiei string2num_poz si se schimba semnul
+rezultatului returnat de aceasta.
+
+======================================================================
+
+calculate_tree:
+Este functia recursiva descrisa in ideea de baza.
+
+-Se salveaza in registrul ebx adresa nodului radacina.
+-Se verifica daca nodul curent este o frunza (fiul stang si fiul
+drept sunt noduri nule) sau este un subarbore.
+-In cazul in care este un subarbore se calculeaza recursiv valoarea
+fiului drept si valoarea fiului stang si se efectueaza operatia
+corespunzatoare (salvata in registrul edx).
+-In cazul in care nodul este de fapt o frunza se returneaza valoarea
+numerica a acestuia obtinuta in urma apelului functiei string2num.
+
+======================================================================
+
+main:
+
+-Se citeste arborele si se plaseaza radacina acestuia la adresa root.
+-Se calculeaza valoarea arborelui utilizand functia recursiva
+calculate_tree si se afiseaza aceasta valoare.
+-Se elibereaza memoria alocata pentru arbore.
